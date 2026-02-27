@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Music Artist Profile</title>
+<!-- Load Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Configure Tailwind for custom colors and fonts -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'soft-pink': '#fce4fc',
+            'deep-purple': '#a855f7', 
+            'text-purple': '#9d4edd',
+            'card-gradient-start': '#c084fc', // Approx purple
+            'card-gradient-end': '#e879f9', // Approx pink
+            'button-shadow': '#ff66c4', // Hot pink shadow
+            'apple-red': '#fa233b',
+            'apple-bg': '#f5f5f7',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            '3d-pink': '0px 6px 0px 0px #ff66c4', // Custom 3D effect shadow
+            'subtle': '0 4px 20px rgba(0,0,0,0.05)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Load Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Custom Styles for specific tweaks not easily handled by utilities alone -->
+<style data-purpose="custom-utilities">
+    body {
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Smooth gradient for the featured track card */
+    .bg-featured-gradient {
+      background: linear-gradient(90deg, #a855f7 0%, #d946ef 100%);
+    }
+    /* Custom scrollbar hiding if content overflows */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen font-sans flex justify-center selection:bg-pink-200" style="background: linear-gradient(to bottom, #e0c3fc, #fce4fc); min-height: 100vh;">
+<!-- BEGIN: Main Container -->
+<!-- This container simulates a mobile screen width to match the mockup -->
+<main class="w-full max-w-md mx-auto pb-12 flex flex-col items-center space-y-6 p-5">
+<!-- BEGIN: Header Section -->
+<header class="w-full flex flex-col items-center space-y-4">
+<!-- Artist Hero Image -->
+<!-- Using the provided placeholder image for the header visual -->
+<div class="w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-sm relative">
+<img alt="Artist Portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj_767MeRdtciG8gRUj2mkMVx4y3LC_dILVGYd4YasLP-JGvTOLiH0xXp8K2J-67YZVkO0NnhXPx5zj-6_Wi2-o65yy9h8avASqksae_1-uoTCqoOSIFHbtoSnX_9Qwl6UJQ0nJnYsO1nJNOGakeZX5flJEp6WVr9tDc8FcMB6wiUqA5NKo8p3bWxRn4ntL44loQCkws0eypiPDreEslPRdf3YQOdeF1mHZBDrRIPqWaV7pCN3ERPcezoF_ooF1GNBIBnVG8nH3h74"/>
+<!-- Gradient overlay at the bottom for better text integration if needed later, though mockup shows clean image -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-50"></div>
+</div>
+<!-- Profile Name -->
+<h1 class="text-2xl font-bold tracking-wide mt-4" style="color: #8e44ad; font-size: 1.5rem;">
+        @_Banda AOEZ
+      </h1>
+<!-- Social Icons Navigation -->
+<!-- Icons are SVG paths for better scalability -->
+<nav aria-label="Social Media Links" class="flex items-center mt-1 space-x-8">
+<!-- YouTube -->
+<a class="hover:opacity-80 transition-opacity" href="#" style="color: #8e44ad;">
+<svg class="w-6 h-6" fill="currentColor" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+</a>
+<!-- Music Note -->
+<a class="hover:opacity-80 transition-opacity" href="#" style="color: #8e44ad;">
+<svg class="w-6 h-6" fill="currentColor" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+</a>
+<!-- Spotify/Bars -->
+<a class="hover:opacity-80 transition-opacity" href="#" style="color: #8e44ad;">
+<svg class="w-6 h-6" fill="currentColor" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+</a>
+<!-- SoundCloud -->
+<a class="hover:opacity-80 transition-opacity" href="#" style="color: #8e44ad;">
+<svg class="w-6 h-6" fill="currentColor" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+</a>
+</nav>
+</header>
+<!-- END: Header Section -->
+<!-- BEGIN: Featured Track Section -->
+<section aria-label="Featured Song" class="w-full">
+<div class="bg-featured-gradient rounded-[24px] flex items-center shadow-lg relative overflow-hidden text-white p-5">
+<!-- Album Art with Play Overlay -->
+<div class="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden mr-4 shadow-md group cursor-pointer w-20 h-20">
+<img alt="Future World Album Art" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj_767MeRdtciG8gRUj2mkMVx4y3LC_dILVGYd4YasLP-JGvTOLiH0xXp8K2J-67YZVkO0NnhXPx5zj-6_Wi2-o65yy9h8avASqksae_1-uoTCqoOSIFHbtoSnX_9Qwl6UJQ0nJnYsO1nJNOGakeZX5flJEp6WVr9tDc8FcMB6wiUqA5NKo8p3bWxRn4ntL44loQCkws0eypiPDreEslPRdf3YQOdeF1mHZBDrRIPqWaV7pCN3ERPcezoF_ooF1GNBIBnVG8nH3h74"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<svg class="w-10 h-10 text-white opacity-90 group-hover:scale-110 transition-transform" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.553a.75.75 0 010 1.106l-6 3.5a.75.75 0 01-1.149-.653V8.6a.75.75 0 011.149-.653l6 3.5z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<!-- Track Info -->
+<div class="flex-grow flex flex-col justify-between h-24 py-1">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-lg font-bold text-lg font-bold">Future World</h2>
+<p class="text-sm text-white/80 font-medium">Tian Swifta</p>
+</div>
+<!-- Spotify Icon -->
+<svg class="w-6 h-6 text-white" fill="currentColor" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.78-.66 13.5 1.62.42.18.539.779.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.46-.96 15.18 1.2.541.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.24z"></path>
+</svg>
+</div>
+<!-- Progress Bar & Share -->
+<div class="w-full flex items-center justify-between mt-auto">
+<!-- Fake Progress Bar -->
+<div class="h-1 bg-white/30 rounded-full w-4/5 relative">
+<div class="absolute left-0 top-0 h-full w-1/3 bg-white rounded-full"></div>
+</div>
+<!-- Share Icon -->
+<button class="text-white hover:text-white/80">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Featured Track Section -->
+<!-- BEGIN: 3D Button Links Section -->
+<section aria-label="Other Tracks" class="w-full space-y-4">
+<!-- Track 1 Button -->
+<button class="w-full bg-white rounded-2xl p-2 pr-6 flex items-center shadow-3d-pink active:translate-y-1 active:shadow-none transition-all duration-150 rounded-full" style="background-color: white; color: #ff69b4; border-radius: 50px; box-shadow: 0 5px 0 #ff69b4; border: none;">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0 w-10 h-10">
+<img alt="Fly in the Sky Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYFwpbqC1sqM6BwfWn5vERRk36pCSZX8R1ve0loAt0PuchoFCnzhXFC_RmFE7ypEYa5LeYYGO17DVq9ROvszMgZMifrMukUaQXwlC_jMc9T1fuI-_gLEhVDP0oP9FH6to0gRSdRcDDurJHd3o5mmwYPdBCXGfo4YzzEJhZieb0PirTCpM_VYXUahxSV90S-7wy36jTSvq1z18mAqAxmPIY76sezRToBjN6L1jRpOgJcKPIIe4ckyLP6hfuyYFnQQsOejhpkfLK4mWD"/>
+</div>
+<span class="flex-grow text-center text-lg font-semibold text-base" style="color: inherit;">Fly in the Sky</span>
+</button>
+<!-- Track 2 Button -->
+<button class="w-full bg-white rounded-2xl p-2 pr-6 flex items-center shadow-3d-pink active:translate-y-1 active:shadow-none transition-all duration-150 rounded-full" style="background-color: white; color: #ff69b4; border-radius: 50px; box-shadow: 0 5px 0 #ff69b4; border: none;">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0 w-10 h-10">
+<img alt="Not the Person Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Lcl604-qBFr8FtpoQw_mOXVxJ8X77kumVnJ4FezPg9BlnFE0T8MRh3wmyBva9s7wLXNIcqfMwZyhvqAVS1itZWkmUck0VjxtImdy0WavqZD-jMuCxgQK5J0RXrNCGvu23P6wgkHeI0-lhpCxh_ofqFb4On9WzTFIwYT7kg9fBUadtvtuTlwz_k3z4f1Wiu7MyMJqkdVtUrgqfuRaItjFkQy0oHWf0wVUSWUIhOfLYeGSfNJq4ko0ETvBF0JN45l5LhWwB9wJdXpe"/>
+</div>
+<span class="flex-grow text-center text-lg font-semibold text-base" style="color: inherit;">Not the person</span>
+</button>
+</section>
+<!-- END: 3D Button Links Section -->
+<!-- BEGIN: Apple Music Card -->
+<!-- This section replicates the detailed Apple Music embed style -->
+<section aria-label="Apple Music Preview" class="w-full bg-white rounded-[24px] shadow-subtle p-4 mt-4 pb-5">
+<!-- Card Header -->
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center space-x-1.5 text-gray-800">
+<!-- Apple Logo SVG -->
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.55 1.37.06 2.86-.33 3.33-.65.75-1.59 1.24-2.5 1.2-.55-1.46.06-2.93.36-3.39.63-.77 1.63-1.28 2.47-1.14z"></path>
+</svg>
+<span class="font-semibold text-sm">Music</span>
+</div>
+<button class="bg-[#e5e5e5] px-3 py-1 rounded-full text-xs font-medium text-gray-600 hover:bg-gray-300 transition-colors" style="background-color: #fce4e4; color: #fa243c;">Sign in</button>
+</div>
+<!-- Card Content: Album & Details -->
+<div class="flex items-center space-x-3 mb-5">
+<div class="w-16 h-16 rounded-md overflow-hidden shadow-sm flex-shrink-0">
+<img alt="Time Machine Album Art" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAndQyeUU8hhgdlpmRoYL6aaowyEjX_DJ0IfSO1m_ltjhRo57cmGa7pHKMpE_rTJjURpLBbs0GAMLtYmbez0ZwA8t3ptxdtqh2D6iNeg-e-gxL4JIzf-rDWa2KjLS3vV-6STHonxzpcpYuCWh2ZiDwIG2J8eyB5sSfCNO4KMNjxLSvaDQMqf531bj4Rz8nhUENXsGFJpOu3WXwyLXxhtXTNSnkCWPx_vohvwKTIbuSZ3IAvSVS4aQTkZAlqkWxUT7hxrAQr_2yoUcoy"/>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="text-base font-bold text-gray-900 truncate">Time Machine</h3>
+<p class="text-sm text-gray-500 truncate">Muni Long</p>
+</div>
+<!-- Menu Dots -->
+<button class="w-8 h-8 rounded-full bg-pink-100/50 flex items-center justify-center text-red-400 hover:bg-pink-100" style="background-color: #fce4e4; color: #fa243c;">
+<svg class="w-5 h-5" fill="currentColor" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"></path>
+</svg>
+</button>
+</div>
+<!-- Card Actions -->
+<div class="flex space-x-3">
+<!-- Play Button -->
+<button class="flex-1 bg-apple-red hover:bg-red-600 text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center transition-colors shadow-sm">
+<svg class="w-5 h-5 mr-1.5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" fill-rule="evenodd"></path>
+</svg>
+          Play
+        </button>
+<!-- View in Apple Music Button -->
+<button class="flex-[1.5] bg-red-50 hover:bg-red-100 text-apple-red font-medium py-2.5 px-4 rounded-lg flex items-center justify-center transition-colors text-sm whitespace-nowrap" style="background-color: #fce4e4; color: #fa243c;">
+          View in Apple Music
+          <svg class="w-3.5 h-3.5 ml-1.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: Apple Music Card -->
+</main>
+<!-- END: Main Container -->
+</body></html><!-- MISSING_IMAGES:
+- Artist Portrait for Header (Woman with pink hair and headphones)
+- Album art for 'Future World' card
+- Thumbnail for 'Fly in the Sky' song button
+- Thumbnail for 'Not the person' song button
+- Album art for 'Time Machine' Apple Music card
+-->
